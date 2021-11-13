@@ -1,0 +1,57 @@
+﻿<Page x:Class="OMS.UI.Views.AddOrderItemView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OMS.UI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddOrderItemView">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="18" FontWeight="DemiBold"
+               Content="Add Order Line Item (please select an item, enter quantity and submit)" />
+        <Label x:Name="lblQuantity" Content="Quantity" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center"
+               HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Width="100" />
+
+        <TextBox x:Name="txtQuantity" Text="{Binding Quantity,Mode=TwoWay}" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left"
+                 VerticalAlignment="Center" FontSize="20" Width="100" />
+
+        <Button x:Name="btnAddItem" Click="btnAddItem_Click" Content="Add Item" Grid.Column="6" Grid.Row="3" Height="35" VerticalAlignment="Top" />
+
+        <DataGrid x:Name="dgStockItems" ItemsSource="{Binding StockItems}" AutoGenerateColumns="False" IsReadOnly="True"
+                  Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SKU" Binding="{Binding Id}" Width="100" />
+                <DataGridTextColumn Header="Item" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="Price" Binding="{Binding Price,StringFormat='c'}" Width="150" />
+                <DataGridTextColumn Header="In Stock" Binding="{Binding InStock}" Width="150" />
+            </DataGrid.Columns>
+            
+            
+        </DataGrid>
+
+
+
+    </Grid>
+</Page>
